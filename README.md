@@ -1,6 +1,6 @@
-## Python Faces Generator using Generative Adversarial Networks (GANs)
+## Deep Learning Faces Generator using Generative Adversarial Networks (GANs)
 
-This faces generator will generate random 128x128 faces using celebrities faces as training set. 
+Faces generator that can generate random 128x128 faces using celebrities faces as training set. 
 
 To use this generator you need install the following packages.
 
