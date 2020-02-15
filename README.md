@@ -41,7 +41,7 @@ generator = FacesGenerator(example_faces_dir='faces/')
 ```
 The next line will extract the faces found in the images of the `faces/` directory and create a dataset file in your root directory called `imgs_128.npz` compressed to be used by the GANs.
 ```python
-generator.extract_faces()
+generator.extract_faces(dataset_file_name='imgs_128.npz')
 ```
 
 ![Potted faces](images/extract_faces.png)
@@ -49,7 +49,7 @@ generator.extract_faces()
 The next line will show you the first 16 faces of the `imgs_128.npz` dataset file.
 
 ```python
-generator.plot_faces()
+generator.plot_faces(dataset_file_name='imgs_128.npz')
 ```
 
 ![Potted faces](images/faces.png)
@@ -60,7 +60,7 @@ This line will generate the new faces, they will appear in your root directory i
 * model_128x128-tuned.h5
 
 ```python
-generator.generate_faces()
+generator.generate_faces(dataset_file_name='imgs_128.npz')
 ````
 
 ![Potted faces](images/gen_images.png)
