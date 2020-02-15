@@ -13,22 +13,21 @@ class FacesGenerator(object):
     def __init__(self, example_faces_dir='img_align_celeba/', n_faces=50000):
         self.directory = example_faces_dir
         self.n_faces = n_faces
-        self.compresed_file_name = 'imgs_128.npz'
 
-    def extract_faces(self):
+    def extract_faces(self, dataset_file_name='imgs_128.npz'):
         # load and extract all faces
         all_faces = load_faces(self.directory, self.n_faces)
         print('Loaded: ', all_faces.shape)
         # save in compressed format
-        savez_compressed(self.compresed_file_name, all_faces)
+        savez_compressed(dataset_file_name, all_faces)
     
-    def plot_faces(self):
-        data = load(self.compresed_file_name)
+    def plot_faces(self, dataset_file_name='imgs_128.npz'):
+        data = load(dataset_file_name)
         faces = data['arr_0']
         print('Loaded: ', faces.shape)
         plot_faces(faces, 4)
     
-    def generate_faces(self):
+    def generate_faces(self, dataset_file_name='imgs_128.npz'):
         n_blocks = 6
         # size of the latent space
         latent_dim = 100
@@ -39,7 +38,7 @@ class FacesGenerator(object):
         # define composite models
         gan_models = define_composite(d_models, g_models)
         # load image data
-        dataset = load_real_samples(self.compresed_file_name)
+        dataset = load_real_samples(dataset_file_name)
         print('Loaded', dataset.shape)
         # train model
         n_batch = [16, 16, 16, 8, 4, 4]
